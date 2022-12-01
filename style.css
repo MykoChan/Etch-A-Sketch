@@ -12,6 +12,8 @@ body {
 }
 
 .grid-container {
+    height: 400px;
+    width: 400px;
     display: grid;
     border: 10px solid black;
 }
@@ -19,8 +21,8 @@ body {
 .pixel {
     background: white;
     text-align: center;
-    width: 50px;
-    height: 50px;
+    width: auto;
+    height: auto;
 }
 
 button {
@@ -45,11 +47,10 @@ button:hover {
 
 .color-pick {
     margin: 10px;
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     overflow: hidden;
     border-radius: 100%;
-    border: 1px solid;
     transition: transform 0.05s ease-in-out;
 }
 

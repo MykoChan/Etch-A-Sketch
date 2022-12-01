@@ -1,4 +1,4 @@
-const size = 16;
+const size = 5;
 
 let gridContainer = document.createElement('div');
 gridContainer.classList.add("grid-container")
@@ -66,7 +66,7 @@ function changeColor(e) {
     color = e.target.value;
 }
 
-setupGrid(16);
+setupGrid(size);
 
 pencilButton.addEventListener('click', changeMode)
 eraserButton.addEventListener('click', changeMode)
