@@ -12,22 +12,13 @@ body {
 }
 
 .grid-container {
-    border: 10px, solid, black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    border: 10px solid black;
 }
 
-.col {
-    flex: 1;
-}
-
-.row {
+.pixel {
     background: white;
     text-align: center;
-}
-
-.col > .row {
     width: 50px;
     height: 50px;
 }
@@ -53,11 +44,17 @@ button:hover {
 }
 
 .color-pick {
+    margin: 10px;
     width: 80px;
     height: 80px;
     overflow: hidden;
     border-radius: 100%;
     border: 1px solid;
+    transition: transform 0.05s ease-in-out;
+}
+
+.color-pick:hover {
+    transform: scale(1.15)
 }
 
 #color-picker {

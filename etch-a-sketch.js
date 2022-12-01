@@ -1,8 +1,9 @@
+const size = 16;
+
 let gridContainer = document.createElement('div');
 gridContainer.classList.add("grid-container")
 
 const body = document.querySelector("body");
-console.log(body);
 body.appendChild(gridContainer);
 
 const container = document.querySelector('.grid-container');
@@ -12,8 +13,6 @@ const clearButton = document.querySelector('#clear');
 const colorPicker = document.querySelector('#color-picker');
 
 pencilButton.classList.add("button-selected");
-const rows = 16;
-const columns = 16;
 
 let mousedown = false;
 let currentMode = "pencil";
@@ -36,22 +35,23 @@ function draw(e) {
     }   
 }
 
-function setupGrid(x, y) {
-    for (let i = 0; i < y; i++) {
-        let col = document.createElement('div');
-        col.className = "col";
-        for (let j = 0; j < x; j++) {
-            let row = document.createElement('div');
-            row.className = "row";
-            // row.innerText = j + " " + i;
-            col.appendChild(row);
-        }
-        container.appendChild(col);
+function setupGrid(size) {
+    container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    for (let i = 0; i < size*size; i++) {
+        let pixel = document.createElement('div');
+        pixel.className = "pixel";
+        container.appendChild(pixel);
     }
+
+    const pixels = document.querySelectorAll('.pixel'); 
+    pixels.forEach(pixel => pixel.addEventListener('mousedown', draw))
+    pixels.forEach(pixel => pixel.addEventListener('mouseover', draw))
 }
 
 function clearCanvas() {
-    body.removeChild(gridContainer);
+    gridContainer.innerHTML = '';
+    setupGrid(size)
 }
 
 function changeMode(button) {
@@ -66,13 +66,9 @@ function changeColor(e) {
     color = e.target.value;
 }
 
-setupGrid(rows, columns)
-
-const pixels = document.querySelectorAll('.row');
-pixels.forEach(pixel => pixel.addEventListener('mousedown', draw))
-pixels.forEach(pixel => pixel.addEventListener('mouseover', draw))
+setupGrid(16);
 
 pencilButton.addEventListener('click', changeMode)
 eraserButton.addEventListener('click', changeMode)
-// clearButton.addEventListener('click', clearCanvas)
+clearButton.addEventListener('click', clearCanvas)
 colorPicker.addEventListener('input', changeColor)
