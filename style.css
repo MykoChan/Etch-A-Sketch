@@ -4,6 +4,7 @@ body {
     gap: 100px;
     background-color: #ededed;
 }
+
 .UI {
     display: flex;
     justify-content: center;
@@ -23,6 +24,7 @@ body {
     text-align: center;
     width: auto;
     height: auto;
+    user-select: none; /* This prevents the mouse from missing the mouse up event when dragging by preventing the user from selecting anything. */
 }
 
 button {
